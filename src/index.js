@@ -60,7 +60,7 @@ function parentUntilEvent(block) {
   if (block.getParent()) {
     if (block.getParent().type == "client_on_event") return block.getParent();
     return parentUntilEvent(block.getParent());
-    // return block;
+     return block;
   }
   if (block.type === "client_on_event") return block;
   return false;
@@ -72,14 +72,14 @@ Blockly.Blocks["event_var"] = {
 
     this.setInputsInline(true);
     this.appendDummyInput().appendField("event var");
-    // if (this.getRootBlock().type == "client_on_event") {
-    //   const newOptions =
-    //     eventVars[this.getRootBlock().getFieldValue("eventName")];
-    //   this.appendDummyInput("dropdown").appendField(
-    //     new Blockly.FieldDropdown(newOptions),
-    //     "variable"
-    //   );
-    // }
+     if (this.getRootBlock().type == "client_on_event") {
+       const newOptions =
+         eventVars[this.getRootBlock().getFieldValue("eventName")];
+       this.appendDummyInput("dropdown").appendField(
+         new Blockly.FieldDropdown(newOptions),
+         "variable"
+       );
+     }
 
     this.setColour(230);
   },
